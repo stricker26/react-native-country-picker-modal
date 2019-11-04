@@ -82,7 +82,8 @@ export default class CountryPicker extends Component {
     hideAlphabetFilter: PropTypes.bool,
     renderFilter: PropTypes.func,
     showCallingCode: PropTypes.bool,
-    filterOptions: PropTypes.object
+    filterOptions: PropTypes.object,
+    modalVisibleProps: PropTypes.boolean,
   }
 
   static defaultProps = {
@@ -363,6 +364,11 @@ export default class CountryPicker extends Component {
         value={value}
       />
     )
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { modalVisibleProps } = nextProps;
+    this.setState({ modalVisible: modalVisibleProps });
   }
 
   render() {
